@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>FoodTracker</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>FoodTracker</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>Location</th>
+			<th>Expiration date</th>
+		</tr>
+		<tr th:each = "ingredient : ${ingredients}">
+			<td th:text=${ingredient.name}></td>
+			<td th:text=${ingredient.quantity}></td>
+			<td th:text=${ingredient.location}></td>
+			<td th:text=${ingredient.expirationDate}></td>
+		</tr>
+	</table>
+</body>
+</html>
