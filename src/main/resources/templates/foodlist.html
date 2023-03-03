@@ -3,22 +3,30 @@
 <head>
 	<title>FoodTracker</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
-	<h1>FoodTracker</h1>
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>Quantity</th>
-			<th>Location</th>
-			<th>Expiration date</th>
-		</tr>
-		<tr th:each = "ingredient : ${ingredients}">
-			<td th:text=${ingredient.name}></td>
-			<td th:text=${ingredient.quantity}></td>
-			<td th:text=${ingredient.location}></td>
-			<td th:text=${ingredient.expirationDate}></td>
-		</tr>
-	</table>
+	<div style="margin: 50px;">
+		<h1>FoodTracker</h1>
+		<table class="table table-striped table-bordered table-responsive">
+			<tr>
+				<th>Name</th>
+				<th>Quantity</th>
+				<th>Location</th>
+				<th>Expiration date</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<tr th:each = "ingredient : ${ingredients}">
+				<td th:text=${ingredient.name}></td>
+				<td th:text=${ingredient.quantity}></td>
+				<td th:text=${ingredient.location}></td>
+				<td th:text=${ingredient.expirationDate}></td>
+				<td><a class="btn btn-primary">Edit</a></td>
+				<td><a class="btn btn-danger">Delete</a></td>
+			</tr>
+		</table>
+		<a class="btn btn-success" href="/addFood">Add food</a>
+	</div>
 </body>
 </html>

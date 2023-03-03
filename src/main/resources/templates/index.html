@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <head>
 	<title>FoodTracker</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Index page</h1>
+	<div style="margin: 50px;">
+		<h1>Welcome to FoodTracker!</h1>
+	</div>
+	<div style="margin: 50px;">
+		<a href="/foodlist" class="btn btn-primary">Go to the food list</a>
+	</div>
 </body>
 </html>
