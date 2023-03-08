@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import harjoitustyo.FoodTracker.domain.Food;
 import harjoitustyo.FoodTracker.domain.FoodRepository;
+import harjoitustyo.FoodTracker.domain.FoodTypeRepository;
 import harjoitustyo.FoodTracker.domain.LocationRepository;
 
 @Controller
@@ -19,6 +20,9 @@ public class FoodController {
 	
 	@Autowired
 	private LocationRepository locationrepository;
+	
+	@Autowired
+	private FoodTypeRepository typerepository;
 	
 	@RequestMapping(value = "/index")
 	public String returnIndexPage() {
@@ -35,6 +39,7 @@ public class FoodController {
 	public String addNewFood(Model model) {
 		model.addAttribute("food", new Food());
 		model.addAttribute("locations", locationrepository.findAll());
+		model.addAttribute("foodTypes", typerepository.findAll());
 		return "addfood";
 	}
 	

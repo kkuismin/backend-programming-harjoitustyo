@@ -22,6 +22,10 @@ public class Food {
 	@JoinColumn(name = "locationid")
 	private Location location;
 	
+	@ManyToOne
+	@JoinColumn(name = "typeid")
+	private FoodType foodType;
+	
 	private String expirationDate;
 	
 	public Food() {
@@ -35,12 +39,13 @@ public class Food {
 		this.expirationDate = expirationDate;
 	}
 	
-	public Food(String name, int quantity, String expirationDate, Location location) {
+	public Food(String name, int quantity, String expirationDate, Location location, FoodType foodType) {
 		super();
 		this.name = name;
 		this.quantity = quantity;
 		this.expirationDate = expirationDate;
 		this.location = location;
+		this.foodType = foodType;
 	}
 
 	public Long getId() {
@@ -59,10 +64,6 @@ public class Food {
 		this.name = name;
 	}
 
-	public Location getLocation() {
-		return location;
-	}
-
 	public int getQuantity() {
 		return quantity;
 	}
@@ -71,8 +72,20 @@ public class Food {
 		this.quantity = quantity;
 	}
 
+	public Location getLocation() {
+		return location;
+	}
+	
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+	
+	public FoodType getFoodType() {
+		return foodType;
+	}
+
+	public void setFoodType(FoodType foodType) {
+		this.foodType = foodType;
 	}
 
 	public String getExpirationDate() {
@@ -85,9 +98,11 @@ public class Food {
 
 	@Override
 	public String toString() {
-		return "Food [id=" + id + ", name=" + name + ", quantity=" + quantity + ", location=" + location
-				+ ", expirationDate=" + expirationDate + "]";
+		return "Food [id=" + id + ", name=" + name + ", quantity=" + quantity + ", location=" + location + ", foodType="
+				+ foodType + ", expirationDate=" + expirationDate + "]";
 	}
+
+
 
 
 	

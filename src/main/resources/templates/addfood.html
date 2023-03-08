@@ -25,6 +25,13 @@
 				</select>
 			</div>
 			<div class="form-group">
+				<label for="typelist">Location</label>
+				<select id="typelist" th:field="*{foodType}" class="form-control">
+					<option th:each="foodType : ${foodTypes}" th:value="${foodType.typeid}"
+						th:text="${foodType.typeName}"></option>
+				</select>
+			</div>
+			<div class="form-group">
 				<label>Expiration date</label>
 				<input type="text" class="form-control" th:field="*{expirationDate}" />
 			</div>

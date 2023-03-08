@@ -13,6 +13,7 @@
 				<th>Name</th>
 				<th>Quantity</th>
 				<th>Location</th>
+				<th>Food type</th>
 				<th>Expiration date</th>
 				<th>Edit</th>
 				<th>Delete</th>
@@ -21,6 +22,7 @@
 				<td th:text=${ingredient.name}></td>
 				<td th:text=${ingredient.quantity}></td>
 				<td th:text=${ingredient.location.locationName}></td>
+				<td th:text=${ingredient.foodType.typeName}></td>
 				<td th:text=${ingredient.expirationDate}></td>
 				<td><a class="btn btn-primary">Edit</a></td>
 				<td><a class="btn btn-danger">Delete</a></td>
