@@ -7,8 +7,8 @@
 </head>
 <body>
 	<div style="margin: 50px;">
-		<h1>FoodTracker</h1>
-		<table class="table table-striped table-bordered table-responsive">
+		<h1>FoodTracker 🍽️</h1>
+		<table class="table table-striped table-bordered">
 			<tr>
 				<th>Name</th>
 				<th>Quantity</th>
@@ -20,13 +20,13 @@
 			<tr th:each = "ingredient : ${ingredients}">
 				<td th:text=${ingredient.name}></td>
 				<td th:text=${ingredient.quantity}></td>
-				<td th:text=${ingredient.location}></td>
+				<td th:text=${ingredient.location.locationName}></td>
 				<td th:text=${ingredient.expirationDate}></td>
 				<td><a class="btn btn-primary">Edit</a></td>
 				<td><a class="btn btn-danger">Delete</a></td>
 			</tr>
 		</table>
-		<a class="btn btn-success" href="/addFood">Add food</a>
+		<a class="btn btn-success" href="/addfood">Add food</a>
 	</div>
 </body>
 </html>

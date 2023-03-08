@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Food {
@@ -16,7 +18,9 @@ public class Food {
 	
 	private int quantity;
 	
-	private String location;
+	@ManyToOne
+	@JoinColumn(name = "locationid")
+	private Location location;
 	
 	private String expirationDate;
 	
@@ -24,12 +28,19 @@ public class Food {
 		super();
 	}
 	
-	public Food(String name, int quantity, String location, String expirationDate) {
+	public Food(String name, int quantity, String expirationDate) {
 		super();
 		this.name = name;
 		this.quantity = quantity;
-		this.location = location;
 		this.expirationDate = expirationDate;
+	}
+	
+	public Food(String name, int quantity, String expirationDate, Location location) {
+		super();
+		this.name = name;
+		this.quantity = quantity;
+		this.expirationDate = expirationDate;
+		this.location = location;
 	}
 
 	public Long getId() {
@@ -48,7 +59,7 @@ public class Food {
 		this.name = name;
 	}
 
-	public String getLocation() {
+	public Location getLocation() {
 		return location;
 	}
 
@@ -60,7 +71,7 @@ public class Food {
 		this.quantity = quantity;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(Location location) {
 		this.location = location;
 	}
 
