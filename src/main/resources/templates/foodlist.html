@@ -24,8 +24,8 @@
 				<td th:text=${ingredient.location.locationName}></td>
 				<td th:text=${ingredient.foodType.typeName}></td>
 				<td th:text=${ingredient.expirationDate}></td>
-				<td><a class="btn btn-primary">Edit</a></td>
-				<td><a class="btn btn-danger">Delete</a></td>
+				<td><a class="btn btn-primary" th:href="@{/edit/{id}(id=${ingredient.id})}">Edit</a></td>
+				<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${ingredient.id})}">Delete</a></td>
 			</tr>
 		</table>
 		<a class="btn btn-success" href="/addfood">Add food</a>
