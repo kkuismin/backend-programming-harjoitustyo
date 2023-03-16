@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Food {
@@ -14,8 +16,10 @@ public class Food {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Size(min=1, max=30)
 	private String name;
 	
+	@Min(value=1)
 	private int quantity;
 	
 	@ManyToOne
