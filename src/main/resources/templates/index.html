@@ -6,11 +6,22 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<div style="margin: 50px;">
-		<h1>Welcome to FoodTracker!</h1>
-	</div>
-	<div style="margin: 50px;">
-		<a href="/foodlist" class="btn btn-primary">Go to the food list</a>
+	<nav class="navbar navbar-expand-sm navbar-light" style="padding-left:20px; background-color: #96D9A5;">
+	 	<a class="navbar-brand" href="/">FoodTracker 🍽️</a>
+	 	<div class="navbar-nav">
+	 		<ul class="navbar-nav mr-auto">
+	 			<li class="nav-item">
+	 				<a class="nav-link" href="/">Home</a>
+	 			</li>
+	 			<li class="nav-item">
+	 				<a class="nav-link active" href="/addfood">Add food</a>
+	 			</li>
+	 		</ul>
+	 	</div>
+	</nav>
+	<div class="container mt-5">
+		<h1 class="mb-4">Welcome to FoodTracker!</h1>
+		<a href="/foodlist" class="btn btn-primary mt-4">Go to the food list</a>
 	</div>
 </body>
 </html>

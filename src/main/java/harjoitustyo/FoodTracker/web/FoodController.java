@@ -1,5 +1,8 @@
 package harjoitustyo.FoodTracker.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import harjoitustyo.FoodTracker.domain.Food;
 import harjoitustyo.FoodTracker.domain.FoodRepository;
@@ -36,7 +40,7 @@ public class FoodController {
 	
 	@RequestMapping(value = { "/", "/foodlist" })
 	public String showFoodList(Model model) {
-		model.addAttribute("ingredients", foodrepository.findAll());
+		model.addAttribute("ingredients", foodrepository.findAllByOrderByLocationAsc());
 		return "foodlist";
 	}
 	
@@ -48,7 +52,7 @@ public class FoodController {
 		return "addfood";
 	}
 	
-	@PostMapping("/saveFood")
+	@PostMapping("/savefood")
 	public String saveFood(@Valid @ModelAttribute ("food") Food food, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("locations", locationrepository.findAll());
@@ -72,4 +76,16 @@ public class FoodController {
 		foodrepository.deleteById(id);
 		return "redirect:/foodlist";
 	}
+	
+	//REST
+	@GetMapping("/foods")
+	public @ResponseBody List<Food> showFoodRest() {
+		return (List<Food>) foodrepository.findAll();
+	}
+	
+	@GetMapping("/foods/{id}")
+	public @ResponseBody Optional<Food> findFoodRest(@PathVariable("id") Long id) {
+		return foodrepository.findById(id);
+	}
+
 }

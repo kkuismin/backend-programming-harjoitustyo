@@ -42,7 +42,7 @@
 				</select>
 			</div>
 			<div class="mb-3">
-				<label for="typelist" class="form-label">Location</label>
+				<label for="typelist" class="form-label">Food type</label>
 				<select id="typelist" th:field="*{foodType}" class="form-control">
 					<option th:each="foodType : ${foodTypes}" th:value="${foodType.typeid}"
 						th:text="${foodType.typeName}"></option>

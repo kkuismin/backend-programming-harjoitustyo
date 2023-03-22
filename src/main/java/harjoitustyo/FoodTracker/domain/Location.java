@@ -23,7 +23,7 @@ public class Location {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
 	private List<Food> foodlist;
-	
+
 	public Location() {
 		super();
 	}
@@ -47,6 +47,14 @@ public class Location {
 
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
+	}
+	
+	public List<Food> getFoodlist() {
+		return foodlist;
+	}
+
+	public void setFoodlist(List<Food> foodlist) {
+		this.foodlist = foodlist;
 	}
 
 	@Override
