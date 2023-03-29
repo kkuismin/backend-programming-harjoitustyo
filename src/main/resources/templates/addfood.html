@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 	<title>FoodTracker</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,10 +11,13 @@
 	 	<div class="navbar-nav">
 	 		<ul class="navbar-nav mr-auto">
 	 			<li class="nav-item">
-	 				<a class="nav-link" href="/">Home</a>
+	 				<a class="nav-link" href="/">Food list</a>
 	 			</li>
 	 			<li class="nav-item">
 	 				<a class="nav-link active" href="/addfood">Add food</a>
+	 			</li>
+	 			<li class="nav-item">
+	 				<a class="nav-link" href="/logout" th:action="@{/logout}" method="post">Sign out</a>
 	 			</li>
 	 		</ul>
 	 	</div>

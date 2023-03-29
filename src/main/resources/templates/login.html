@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>FoodTracker</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm navbar-light" style="padding-left:20px; background-color: #96D9A5;">
+	 	<a class="navbar-brand" href="/">FoodTracker 🍽️</a>
+	</nav>
+	<div class="container mt-5">
+		<div class="alert alert-danger" th:if="${param.error}">Invalid username or password.</div>
+		<div class="alert alert-warning" th:if="${param.logout}">You have been logged out.</div>
+		<h1 class="mb-4">Sign in</h1>
+		<form th:action="@{/login}" method="post">
+			<div class="mb-2">
+				<label>Username:<input type="text" name="username" class="form-control"/></label>
+			</div>
+			<div class="mb-2">
+				<label>Password:<input type="password" name="password" class="form-control"/></label>
+			</div>
+			<div><input type="submit" value="Sign in" class="btn btn-primary mt-4"/></div>
+		</form>
+	</div>
+</body>
+</html>

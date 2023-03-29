@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,12 +39,18 @@ public class FoodController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
+	
 	@RequestMapping(value = { "/", "/foodlist" })
 	public String showFoodList(Model model) {
 		model.addAttribute("ingredients", foodrepository.findAllByOrderByLocationAsc());
 		return "foodlist";
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/addfood")
 	public String addNewFood(Model model) {
 		model.addAttribute("food", new Food());
@@ -52,6 +59,7 @@ public class FoodController {
 		return "addfood";
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("/savefood")
 	public String saveFood(@Valid @ModelAttribute ("food") Food food, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
@@ -63,6 +71,7 @@ public class FoodController {
 		return "redirect:/foodlist";
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/edit/{id}")
 	public String editFood(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("food", foodrepository.findById(id));
@@ -71,6 +80,7 @@ public class FoodController {
 		return "editfood";
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/delete/{id}")
 	public String deleteFood(@PathVariable("id") Long id, Model model) {
 		foodrepository.deleteById(id);

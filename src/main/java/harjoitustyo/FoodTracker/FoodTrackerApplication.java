@@ -11,6 +11,8 @@ import harjoitustyo.FoodTracker.domain.FoodType;
 import harjoitustyo.FoodTracker.domain.FoodTypeRepository;
 import harjoitustyo.FoodTracker.domain.Location;
 import harjoitustyo.FoodTracker.domain.LocationRepository;
+import harjoitustyo.FoodTracker.domain.User;
+import harjoitustyo.FoodTracker.domain.UserRepository;
 
 @SpringBootApplication
 public class FoodTrackerApplication {
@@ -20,8 +22,12 @@ public class FoodTrackerApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(FoodRepository foodrepository, LocationRepository locationrepository, FoodTypeRepository typerepository) {
+	public CommandLineRunner demo(UserRepository userrepository, FoodRepository foodrepository, LocationRepository locationrepository, FoodTypeRepository typerepository) {
 		return (args) -> {
+			System.out.println("creating users");
+			userrepository.save(new User("John", "Doe", "user", "$2a$10$44CXRQzFklqLdg8EP2n35upJSOrSSd.q.GcBjVnoYpqhx8jpInMhy", "USER"));
+			userrepository.save(new User("Jane", "Doe", "admin", "$2a$10$wRPxDuKJ5uVaholbnaD89ulbEvAyHqI0i6SS6XnKk1gGF6.Rr76hm", "ADMIN"));
+			
 			System.out.println("creating locations");
 			locationrepository.save(new Location("Freezer"));
 			locationrepository.save(new Location("Fridge"));
