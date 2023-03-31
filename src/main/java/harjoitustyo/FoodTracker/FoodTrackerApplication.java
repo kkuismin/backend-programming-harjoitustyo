@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Bean;
 
 import harjoitustyo.FoodTracker.domain.Food;
 import harjoitustyo.FoodTracker.domain.FoodRepository;
-import harjoitustyo.FoodTracker.domain.FoodType;
-import harjoitustyo.FoodTracker.domain.FoodTypeRepository;
+import harjoitustyo.FoodTracker.domain.Foodtype;
+import harjoitustyo.FoodTracker.domain.FoodtypeRepository;
 import harjoitustyo.FoodTracker.domain.Location;
 import harjoitustyo.FoodTracker.domain.LocationRepository;
-import harjoitustyo.FoodTracker.domain.User;
-import harjoitustyo.FoodTracker.domain.UserRepository;
+import harjoitustyo.FoodTracker.domain.AppUser;
+import harjoitustyo.FoodTracker.domain.AppUserRepository;
 
 @SpringBootApplication
 public class FoodTrackerApplication {
@@ -20,13 +20,13 @@ public class FoodTrackerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FoodTrackerApplication.class, args);
 	}
-
+/*
 	@Bean
-	public CommandLineRunner demo(UserRepository userrepository, FoodRepository foodrepository, LocationRepository locationrepository, FoodTypeRepository typerepository) {
+	public CommandLineRunner demo(AppUserRepository userrepository, FoodRepository foodrepository, LocationRepository locationrepository, FoodTypeRepository typerepository) {
 		return (args) -> {
 			System.out.println("creating users");
-			userrepository.save(new User("John", "Doe", "user", "$2a$10$44CXRQzFklqLdg8EP2n35upJSOrSSd.q.GcBjVnoYpqhx8jpInMhy", "USER"));
-			userrepository.save(new User("Jane", "Doe", "admin", "$2a$10$wRPxDuKJ5uVaholbnaD89ulbEvAyHqI0i6SS6XnKk1gGF6.Rr76hm", "ADMIN"));
+			userrepository.save(new AppUser("John", "Doe", "user", "$2a$10$44CXRQzFklqLdg8EP2n35upJSOrSSd.q.GcBjVnoYpqhx8jpInMhy", "USER"));
+			userrepository.save(new AppUser("Jane", "Doe", "admin", "$2a$10$wRPxDuKJ5uVaholbnaD89ulbEvAyHqI0i6SS6XnKk1gGF6.Rr76hm", "ADMIN"));
 			
 			System.out.println("creating locations");
 			locationrepository.save(new Location("Freezer"));
@@ -55,5 +55,5 @@ public class FoodTrackerApplication {
 				System.out.println(food);
 			}
 		};
-	}
+	} */
 }

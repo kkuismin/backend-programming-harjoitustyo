@@ -5,31 +5,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name="users")
-public class User {
+@Entity
+@Table(name="appuser")
+public class AppUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "userid", nullable = false, updatable = false)
-	private Long userid;
+	@Column(name = "id", nullable = false, updatable = false)
+	private Long id;
 	
-	private String firstName, lastName;
+	@Column(name = "firstname")
+	private String firstName;
+	
+	@Column(name = "lastname")
+	private String lastName;
 	
 	@Column(name= "username", nullable = false, unique = true)
 	private String username;
 	
-	@Column(name = "password", nullable = false)
+	@Column(name = "password_hash", nullable = false)
 	private String passwordHash;
 	
 	@Column(name = "role", nullable = false)
 	private String role;
 	
-	public User() {
+	public AppUser() {
 		super();
 	}
 	
-	public User(String firstName, String lastName, String username, String passwordHash, String role) {
+	public AppUser(String firstName, String lastName, String username, String passwordHash, String role) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -38,12 +44,12 @@ public class User {
 		this.role = role;
 	}
 
-	public Long getUserid() {
-		return userid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserid(Long userid) {
-		this.userid = userid;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -88,7 +94,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
+		return "AppUser [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
 				+ username + ", passwordHash=" + passwordHash + ", role=" + role + "]";
 	}
 	

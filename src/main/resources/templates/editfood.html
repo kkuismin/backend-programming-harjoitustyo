@@ -24,7 +24,7 @@
 	</nav>
 	<div class="container mt-5">
 		<h1>Edit food</h1>
-		<form th:object="${food}" th:action=@{/saveFood} action="#" method="post">
+		<form th:object="${food}" th:action=@{/savefood} action="#" method="post">
 			<div>
 	    		<label for="id" class="form-label"></label>
 	    		<input type="hidden" id="id" th:field="*{id}" />

@@ -1,5 +1,6 @@
 package harjoitustyo.FoodTracker.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,10 +14,10 @@ import javax.validation.constraints.Size;
 public class Food {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Size(min=1, max=30)
+	@Size(min=1, max=50)
 	private String name;
 	
 	@Min(value=1)
@@ -28,8 +29,9 @@ public class Food {
 	
 	@ManyToOne
 	@JoinColumn(name = "typeid")
-	private FoodType foodType;
+	private Foodtype foodtype;
 	
+	@Column(name = "expirationdate")
 	private String expirationDate;
 	
 	public Food() {
@@ -43,13 +45,13 @@ public class Food {
 		this.expirationDate = expirationDate;
 	}
 	
-	public Food(String name, int quantity, String expirationDate, Location location, FoodType foodType) {
+	public Food(String name, int quantity, String expirationDate, Location location, Foodtype foodtype) {
 		super();
 		this.name = name;
 		this.quantity = quantity;
 		this.expirationDate = expirationDate;
 		this.location = location;
-		this.foodType = foodType;
+		this.foodtype = foodtype;
 	}
 
 	public Long getId() {
@@ -84,12 +86,12 @@ public class Food {
 		this.location = location;
 	}
 	
-	public FoodType getFoodType() {
-		return foodType;
+	public Foodtype getFoodType() {
+		return foodtype;
 	}
 
-	public void setFoodType(FoodType foodType) {
-		this.foodType = foodType;
+	public void setFoodType(Foodtype foodtype) {
+		this.foodtype = foodtype;
 	}
 
 	public String getExpirationDate() {
@@ -103,7 +105,7 @@ public class Food {
 	@Override
 	public String toString() {
 		return "Food [id=" + id + ", name=" + name + ", quantity=" + quantity + ", location=" + location + ", foodType="
-				+ foodType + ", expirationDate=" + expirationDate + "]";
+				+ foodtype + ", expirationDate=" + expirationDate + "]";
 	}
 
 
